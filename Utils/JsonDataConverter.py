@@ -14,4 +14,4 @@ def GetClientReceiveFromServerMessage(listOfMessageData):
 	return json.dumps(listOfMessageData)
 
 def GetNoticeDataList(noticeDataList):
-	return json.dumps(noticeDataList)
+	return json.dumps({"Result" : noticeDataList}, ensure_ascii=False)
