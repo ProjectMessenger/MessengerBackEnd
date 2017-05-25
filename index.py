@@ -1,6 +1,10 @@
 from flask import Flask
 from Route import *
 import sys
+
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 app=Flask(__name__)
 app.register_blueprint(routes)
 

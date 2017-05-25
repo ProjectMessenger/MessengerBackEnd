@@ -1,6 +1,7 @@
 from . import routes
 from flask import request
 from Utils import JsonDataConverter
+from Core import DatabaseManager
 
 @routes.route("/")
 def Hello():
@@ -16,3 +17,9 @@ def MessageReceive(downloaderName):
 	testReturnMessage = "{'Error': 'Not available right now.'}"
 	print downloaderName, ": ", request.args.get('lastReceiveMessageDate')
 	return testReturnMessage
+
+@routes.route("/crawler/v1.0.0/receive", methods=['GET'])
+def CrawledDataReceive():
+	clientStoredDataNum = request.args.get('clientDataNum')
+	jsonNoticeData = DatabaseManager.GetCrawledDataList()
+	return jsonNoticeData
