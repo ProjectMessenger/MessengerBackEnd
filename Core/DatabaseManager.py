@@ -5,7 +5,7 @@ def GetCrawledDataList():
 	databaseConnection = pymysql.connect(host='stories3.iptime.org', user='KoreanArmy', 
 										 password='toortoor%^%', db='KoreanArmy', charset='utf8')
 	dataCursor = databaseConnection.cursor(pymysql.cursors.DictCursor)
-	sqlQuery = "select * from NoticeData;"
+	sqlQuery = "select * from NoticeData limit 10;"
 	dataCursor.execute(sqlQuery)
 	
 	dataRows = dataCursor.fetchall()
