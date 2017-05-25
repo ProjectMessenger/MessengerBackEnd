@@ -11,10 +11,13 @@ def GetCrawledDataList():
 	dataRows = dataCursor.fetchall()
 	
 	noticeDataList = []
+	count = 0
 	
 	for indexOfDataRow in dataRows:
-		eachNoticeData = [indexOfDataRow['noticeId'], indexOfDataRow['title'], indexOfDataRow['url'], indexOfDataRow['writer'], str(indexOfDataRow['uploadDate'])]
+		eachNoticeData = {"NoticeId" : indexOfDataRow['noticeId'], "Title" :  indexOfDataRow['title'], "Url" : indexOfDataRow['url'], "Writer" : indexOfDataRow['writer'], "UploadDate" : str(indexOfDataRow['uploadDate'])}
 		noticeDataList.append(eachNoticeData)
+		# noticeDataList[count] = eachNoticeData
+		# count += 1
 	
 	jsonConvertedNoticeString = JsonDataConverter.GetNoticeDataList(noticeDataList)
 	print jsonConvertedNoticeString
